@@ -1,0 +1,16 @@
+@font-face {
+    font-family: "DS-Digital";
+    -fx-font-weight: 5px;
+}
+.count-label {
+    -fx-pref-width: 45;
+
+    -fx-font-family: DS-Digital;
+    -fx-font-size: 30;
+    -fx-text-fill: red;
+
+    -fx-background-color: black;
+}
+.text-field {
+    -fx-pref-width: 45;
+}

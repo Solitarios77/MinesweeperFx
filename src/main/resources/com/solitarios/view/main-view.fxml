@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.solitarios.controller.MainController"
+            stylesheets="@main-view.css">
+    <fx:define>
+        <ToggleGroup fx:id="gameDifficultyGroup"></ToggleGroup>
+    </fx:define>
+    <BorderPane AnchorPane.rightAnchor="0" AnchorPane.leftAnchor="0">
+        <top>
+            <VBox>
+                <HBox alignment="CENTER_LEFT">
+                    <VBox.margin>
+                        <Insets bottom="5"/>
+                    </VBox.margin>
+                    <MenuBar>
+                        <Menu text="开始">
+                            <RadioMenuItem text="简单" onAction="#changeGameLevel"
+                                           toggleGroup="${gameDifficultyGroup}" selected="true"></RadioMenuItem>
+                            <RadioMenuItem text="中等" onAction="#changeGameLevel"
+                                           toggleGroup="${gameDifficultyGroup}"></RadioMenuItem>
+                            <RadioMenuItem text="困难" onAction="#changeGameLevel"
+                                           toggleGroup="${gameDifficultyGroup}"></RadioMenuItem>
+                            <RadioMenuItem text="自定义" onAction="#changeGameLevel"
+                                           toggleGroup="${gameDifficultyGroup}"></RadioMenuItem>
+                        </Menu>
+                    </MenuBar>
+                    <HBox fx:id="customLevelHBox" visible="false" alignment="CENTER" spacing="5">
+                        <Label text="行"/>
+                        <TextField fx:id="rowsTextField" text="15"/>
+                        <Label text="列"/>
+                        <TextField fx:id="columnsTextField" text="15"/>
+                        <Label text="雷"/>
+                        <TextField fx:id="bombsTextField" text="30"/>
+                        <Button text="确定" onAction="#changeCustomLevel"></Button>
+                    </HBox>
+                </HBox>
+                <BorderPane>
+                    <left>
+                        <!-- 旗子数量显示 -->
+                        <Label fx:id="flagNumberLabel" text="000" styleClass="count-label">
+                            <BorderPane.margin>
+                                <Insets left="10.0"></Insets>
+                            </BorderPane.margin>
+                        </Label>
+                    </left>
+                    <center>
+                        <!-- 当前状态显示，笑脸、哭脸 -->
+                        <Button fx:id="faceButton" onAction="#faceButtonOnAction"></Button>
+                    </center>
+                    <right>
+                        <!-- 当前游戏用时显示 -->
+                        <Label fx:id="timeNumberLabel" text="000" styleClass="count-label">
+                            <BorderPane.margin>
+                                <Insets right="10.0"></Insets>
+                            </BorderPane.margin>
+                        </Label>
+                    </right>
+                </BorderPane>
+            </VBox>
+        </top>
+        <center>
+            <!-- 游戏操作区域 -->
+            <StackPane>
+                <GridPane fx:id="gameArea">
+                    <padding>
+                        <Insets bottom="10" left="10" top="10" right="10"/>
+                    </padding>
+                </GridPane>
+                <Label fx:id="coverLabel" prefWidth="${gameArea.width}" prefHeight="${gameArea.height}"
+                       style="-fx-background-color: transparent" visible="false"></Label>
+            </StackPane>
+        </center>
+    </BorderPane>
+</AnchorPane>
